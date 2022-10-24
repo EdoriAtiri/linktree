@@ -19,6 +19,8 @@
 
 .footer > p {
   width: fit-content;
+  color: #667085;
+  font-size: 16px;
 }
 
 .footer img {
