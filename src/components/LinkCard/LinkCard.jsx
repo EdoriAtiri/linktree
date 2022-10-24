@@ -1,10 +1,16 @@
 import style from './LinkCard.module.css'
 
-function LinkCard() {
+function LinkCard({ title, link, id }) {
   return (
-    <div>
-      <h1 className={style.heading}>hello world</h1>
-    </div>
+    <a
+      id={id}
+      className={style.card}
+      href={link}
+      target="_blank"
+      rel="noreferrer"
+    >
+      {title}
+    </a>
   )
 }
 
