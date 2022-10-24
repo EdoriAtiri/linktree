@@ -63,12 +63,12 @@
 .forward_arrow {
   width: 15.19px;
   height: 14px;
-  transition: scale 0.2s ease;
+  transition: transform 0.2s ease;
 }
 .menu {
   display: none;
   width: 13.33px;
-  transition: scale 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
 .header_btn:hover,
