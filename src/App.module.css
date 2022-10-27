@@ -79,7 +79,6 @@
 
 .card_container {
   margin-top: 56px;
-  margin-bottom: 24px;
   padding: 0 144px;
   display: flex;
   flex-direction: column;
@@ -93,6 +92,8 @@
   justify-content: center;
   align-items: center;
   gap: 36.75px;
+  margin-top: 48px;
+  margin-bottom: 88px;
 }
 
 .slack_github > a {
@@ -128,6 +129,12 @@
   box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
 }
 
+@media only screen and (max-width: 800px) {
+  .card_container {
+    padding: 0 50px;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .card_container {
     margin-top: 32px;
@@ -142,6 +149,10 @@
   .slack_twitter {
     font-size: 14px;
     font-weight: 500;
+  }
+
+  .slack_github {
+    margin-bottom: 56px;
   }
 
   .menu {
