@@ -4,8 +4,7 @@
   padding: 0 112px;
   display: flex;
   justify-content: space-between;
-  /* position: absolute;
-  bottom: 0; */
+  position: relative;
 }
 
 .footer > * {
