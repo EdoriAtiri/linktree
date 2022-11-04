@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import style from './Home.module.css'
 import LinkCard from '../../components/LinkCard/LinkCard'
 import user from '../../Assets/83.jpg'
@@ -55,11 +56,11 @@ function App() {
           link="https://books.zuri.team/design-rules"
           id="book__design"
         />
-        <LinkCard
-          title="Contact Me"
-          link="https://background.zuri.team"
-          id="pitch"
-        />
+        <Link to="/contact">
+          <p id="contact" className={style.slack_twitter}>
+            Contact Me
+          </p>
+        </Link>
       </div>
 
       <div className={style.slack_github}>
