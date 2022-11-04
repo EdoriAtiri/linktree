@@ -56,7 +56,7 @@ function App() {
           link="https://books.zuri.team/design-rules"
           id="book__design"
         />
-        <Link to="/contact">
+        <Link to="/contact" style={{ textDecoration: 'none' }}>
           <p id="contact" className={style.slack_twitter}>
             Contact Me
           </p>
