@@ -1,7 +1,48 @@
-import React from 'react'
+import { useState } from 'react'
 import style from './Contact.module.css'
 
 function Contact() {
+  const [formData, setFormData] = useState({
+    first_name: '',
+    last_name: '',
+    email: '',
+    message: '',
+    terms: false,
+  })
+
+  const { first_name, last_name, email, message, terms } = formData
+
+  const onChange = (e) => {
+    let boolean = null
+
+    if (e.target.value === 'false') {
+      boolean = true
+    }
+
+    if (e.target.value === 'true') {
+      boolean = false
+    }
+
+    if (e.target.type === 'checkbox') {
+      setFormData((prev) => ({
+        ...prev,
+        [e.target.id]: boolean ?? e.target.value,
+      }))
+    }
+
+    if (e.target.type !== 'checkbox') {
+      setFormData((prev) => ({
+        ...prev,
+        [e.target.id]: e.target.value,
+      }))
+    }
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+    console.log(formData)
+  }
+
   return (
     <div className={style.contact}>
       <div className={style.container}>
@@ -10,13 +51,15 @@ function Contact() {
           <p>Hi there, contact me to ask me about anything you have in mind.</p>
         </header>
 
-        <form className={style.form}>
+        <form className={style.form} onSubmit={onSubmit}>
           <div className={style.form_control}>
             <label htmlFor="first_name">First Name</label>
             <input
               type="text"
               id="first_name"
+              value={first_name}
               placeholder="Enter your first name"
+              onChange={onChange}
             />
           </div>
 
@@ -25,13 +68,21 @@ function Contact() {
             <input
               type="text"
               id="last_name"
+              value={last_name}
               placeholder="Enter your last name"
+              onChange={onChange}
             />
           </div>
 
           <div className={`${style.form_control} ${style.email}`}>
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" placeholder="yourname@email.com" />
+            <input
+              type="email"
+              id="email"
+              placeholder="yourname@email.com"
+              value={email}
+              onChange={onChange}
+            />
           </div>
 
           <div className={`${style.form_control} ${style.message}`}>
@@ -39,8 +90,10 @@ function Contact() {
             <textarea
               name="message"
               id="message"
+              value={message}
               placeholder="Send me a message and I'll reply you as soon as possible..."
-            ></textarea>{' '}
+              onChange={onChange}
+            ></textarea>
           </div>
 
           <div className={style.form_control}>
@@ -49,7 +102,14 @@ function Contact() {
               you.
             </p>
 
-            <input type="checkbox" name="" id="terms" />
+            <input
+              type="checkbox"
+              name=""
+              id="terms"
+              value={terms}
+              checked={terms}
+              onChange={onChange}
+            />
           </div>
 
           <button type="submit" id="btn__submit">
