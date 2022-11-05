@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import style from './Contact.module.css'
 
 function Contact() {
-  const [btnDisabled, setBtnDisabled] = useState(true)
+  const [isBtnDisabled, setIsBtnDisabled] = useState(true)
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -47,9 +47,9 @@ function Contact() {
       formData.message !== '' &&
       formData.terms !== false
     ) {
-      setBtnDisabled(false)
+      setIsBtnDisabled(false)
     } else {
-      setBtnDisabled(true)
+      setIsBtnDisabled(true)
     }
   }, [
     formData.first_name,
@@ -150,10 +150,10 @@ function Contact() {
           </div>
 
           <button
-            className={btnDisabled ? style.btnDisabled : style.btnEnabled}
+            className={isBtnDisabled ? style.btnDisabled : style.btnEnabled}
             type="submit"
             id="btn__submit"
-            disabled
+            disabled={isBtnDisabled}
           >
             Send Message
           </button>
