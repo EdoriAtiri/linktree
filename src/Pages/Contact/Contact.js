@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import style from './Contact.module.css'
 
 function Contact() {
+  const [btnDisabled, setBtnDisabled] = useState(true)
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -38,9 +39,41 @@ function Contact() {
     }
   }
 
+  useEffect(() => {
+    if (
+      formData.first_name !== '' &&
+      formData.last_name !== '' &&
+      formData.email !== '' &&
+      formData.message !== '' &&
+      formData.terms !== false
+    ) {
+      setBtnDisabled(false)
+    } else {
+      setBtnDisabled(true)
+    }
+  }, [
+    formData.first_name,
+    formData.last_name,
+    formData.email,
+    formData.message,
+    formData.terms,
+  ])
+
   const onSubmit = (e) => {
     e.preventDefault()
+
+    if (formData.terms === false) {
+    }
     console.log(formData)
+    setTimeout(() => {
+      setFormData({
+        first_name: '',
+        last_name: '',
+        email: '',
+        message: '',
+        terms: false,
+      })
+    }, 1000)
   }
 
   return (
@@ -60,6 +93,7 @@ function Contact() {
               value={first_name}
               placeholder="Enter your first name"
               onChange={onChange}
+              required
             />
           </div>
 
@@ -71,6 +105,7 @@ function Contact() {
               value={last_name}
               placeholder="Enter your last name"
               onChange={onChange}
+              required
             />
           </div>
 
@@ -82,6 +117,7 @@ function Contact() {
               placeholder="yourname@email.com"
               value={email}
               onChange={onChange}
+              required
             />
           </div>
 
@@ -93,6 +129,7 @@ function Contact() {
               value={message}
               placeholder="Send me a message and I'll reply you as soon as possible..."
               onChange={onChange}
+              required
             ></textarea>
           </div>
 
@@ -112,7 +149,12 @@ function Contact() {
             />
           </div>
 
-          <button type="submit" id="btn__submit">
+          <button
+            className={btnDisabled ? style.btnDisabled : style.btnEnabled}
+            type="submit"
+            id="btn__submit"
+            disabled
+          >
             Send Message
           </button>
         </form>

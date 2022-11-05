@@ -101,6 +101,18 @@
   box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
   border-radius: 8px;
   border: none;
+  transition: opacity ease 0.5s, transform ease 0.5s;
+}
+
+.form .btnEnabled:hover {
+  opacity: 0.7;
+}
+.form .btnEnabled:active {
+  transform: scale(0.9);
+}
+
+.btnDisabled {
+  opacity: 0.3;
 }
 
 @media only screen and (max-width: 768px) {
